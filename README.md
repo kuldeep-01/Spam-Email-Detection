@@ -1,74 +1,45 @@
-# Email Spam Classification 
+# 📧 Email Spam Classification
 
-A production-grade machine learning system designed to robustly classify emails as "Spam" or "Ham" (legitimate). This project features a modular pipeline architecture for training and inference, integrated with a modern Streamlit user interface for easy interaction.
+A Machine Learning based Spam Email Detection system that classifies emails as **Spam** or **Ham** using multiple ML models with an interactive Streamlit web app.
 
-## 🚀 Key Features
-
-- **Advanced ML Pipeline**: Modular design separating data ingestion, transformation, and model training.
-- **Multiple Model Support**: evaluation of various algorithms including SVM, Logistic Regression, Decision Trees, and Random Forest.
-- **Interactive Web UI**: Built with Streamlit for real-time single-email analysis and batch processing.
-- **Detailed Analytics**: Comprehensive logging and performance metrics (Precision, Recall, F1-Score).
+## 🚀 Features
+- Spam/Ham prediction
+- Multiple ML models (SVM, Logistic Regression, Random Forest)
+- Streamlit web interface
+- Batch email processing
+- Performance metrics & logging
 
 ## 🛠️ Tech Stack
-
-- **Language**: Python 3.10+
-- **Frontend**: Streamlit
-- **ML Framework**: Scikit-learn
-- **Data Processing**: Pandas, NumPy, BeautifulSoup4
-- **Project Management**: `uv` (recommended) or `pip`
-
+- Python
+- Scikit-learn
+- Streamlit
+- Pandas & NumPy
 
 ## ⚡ Installation
 
-1. **Clone the Repository**
-   ```bash
-   git clone <repository_url>
-   cd Spam-Email-Detection
-   ```
+```bash
+git clone <repository_url>
+cd Spam-Email-Detection
 
-2. **Set up Environment**
-   It is recommended to use a virtual environment.
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
+python -m venv .venv
+.venv\Scripts\activate
 
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+pip install -r requirements.txt
+```
 
-## 🖥️ Usage
-
-### 1. Running the Web Application
-Launch the interactive dashboard to classify emails instantly.
+## ▶️ Run Application
 
 ```bash
 streamlit run app.py
 ```
 
-- **Single Email Tab**: Paste email content to get an immediate Spam/Ham prediction with a confidence score.
-- **Batch Processing Tab**: Upload an `.mbox` file to process multiple emails at once and download the results as a CSV.
+## 🧠 Train Model
 
-### 2. Training the Model
-(Optional) If you wish to retrain the models on new data:
+```bash
+python -m src.pipeline.training_pipeline
+```
 
-1. Place your dataset in `data/dataset/dataset.csv`.
-2. Run the training pipeline:
-   ```bash
-   python -m src.pipeline.training_pipeline
-   ```
-3. Artifacts (Model & Vectorizer) will be saved in the `outputs/` directory.
-4. **Important**: Update `src/config/config.py` with the new paths to your generated model and vectorizer if they change.
-
-## ⚙️ Configuration
-
-The system is highly configurable via `src/config/config.py`. You can adjust:
-- Model hyperparameters (Grid Search configuration)
-- Input/Output paths
-- Training parameters (Cross-validation folds, etc.)
-
-## 📊 Model Performance
-
-The pipeline automatically evaluates models using 5-fold cross-validation. Metrics including Accuracy, Precision, Recall, and F1-Score are logged for each experiment. By default, the system selects the best performing model (often SVM or Random Forest) for inference.
-
+## 📊 Output
+- Spam/Ham Prediction
+- Confidence Score
+- CSV export for batch processing
